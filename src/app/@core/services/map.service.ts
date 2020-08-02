@@ -21,13 +21,14 @@ export class MapService {
   constructor() {
     // Asignamos el token desde las variables de entorno
     this.mapbox.accessToken = environment.mapBoxToken;
-  } 
+  }
+
   setNavigationControl(){
     this.map.addControl(new MapboxDirections({accessToken: mapboxgl.accessToken}), 'top-left');
     //this.map.addControl(new MapboxGeocoder({accessToken:mapboxgl.accessToken}));
     this.map.addControl(new mapboxgl.FullscreenControl());
-
   }
+
   buildMap() {
     this.map = new mapboxgl.Map({
       container: 'map',
@@ -37,6 +38,7 @@ export class MapService {
     });
     this.map.addControl(new mapboxgl.NavigationControl());
     }
+
   setLocationButton(){
     this.map.addControl(new mapboxgl.GeolocateControl({
       positionOptions: {
@@ -45,8 +47,7 @@ export class MapService {
       trackUserLocation: true
       }));
   }
-  
-  
+
   setLocations(){  
     var location = new Location(); 
     var locs = new Array<Location>(); 
@@ -61,8 +62,8 @@ export class MapService {
     locs.push(location);
     this.setMarks(locs);
   }
-  setMarks(locs)
-  {
+
+  setMarks(locs){
     for(var i = 0;i< locs.length;i++){
       var marker = new mapboxgl.Marker()
       .setLngLat([locs[i].getLongitude(), locs[i].getLatitude()])
