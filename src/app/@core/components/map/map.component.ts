@@ -2,7 +2,7 @@ import { ReadExcelService } from './../../../read-excel.service';
 
 import { Component, OnInit } from '@angular/core';
 import { MapService } from '@core/services/map.service';
-import { ConstantPool } from '@angular/compiler';
+import { ConstantPool, compileNgModule } from '@angular/compiler';
 
 @Component({
   selector: 'app-map',
@@ -21,11 +21,10 @@ export class MapComponent implements OnInit {
     this.map.setLocations();
     this.map.setNavigationControl();
     //console.log(this.readexcelservice.get());
-    
-    this.readexcelservice.get().subscribe(resul =>{
-    console.log(resul);
-    });
-        
+
+    this.readexcelservice.get()
+    console.log(this.readexcelservice.data);
+
   }
 
 }

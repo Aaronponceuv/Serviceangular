@@ -25,12 +25,10 @@ export class ReadExcelService {
         var sheet_name_list = workbook.SheetNames;
         console.log(XLSX.utils.sheet_to_json(workbook.Sheets[sheet_name_list[0]]));
         this.data = XLSX.utils.sheet_to_json(workbook.Sheets[sheet_name_list[0]]);
-        
+
       };
-    //return req.send();
+    req.send();
     return this.data;
-    
-    
   }
 
   gethttp(){
@@ -38,5 +36,5 @@ export class ReadExcelService {
     return this.http.get(url);
 
   }
-  
+
 }
